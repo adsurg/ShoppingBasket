@@ -12,5 +12,15 @@ namespace ShoppingBasket.Test
             
             basket.NetTotal().Should().Be(0m);
         }
+
+        [Fact]
+        public void WhenAProductIsAddedThenTheBasketContainsTheCorrectItems()
+        {
+            var basket = new Basket();
+
+            basket.AddItem(new Product("Dove Soap", 39.99m));
+            
+            basket.NetTotal().Should().Be(39.99m);
+        }
     }
 }
