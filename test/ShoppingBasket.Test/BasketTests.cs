@@ -127,5 +127,16 @@ namespace ShoppingBasket.Test
 
             basket.TaxTotal().Should().Be(35m);
         }
+
+        [Fact]
+        public void TheTotalShouldBeCorrectlyCalculated()
+        {
+            var basket = new Basket(12.5m);
+
+            basket.AddItem(new Product("Dove Soap", 39.99m), 2);
+            basket.AddItem(new Product("Axe Deo", 99.99m), 2);
+
+            basket.Total().Should().Be(314.96m);
+        }
     }
 }

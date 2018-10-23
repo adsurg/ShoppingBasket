@@ -18,6 +18,7 @@ namespace ShoppingBasket
         public decimal TaxRate { get; }
         public decimal NetTotal() => Math.Round(Items().Sum(item => item.Product.Price * item.Quantity), 2);
         public decimal TaxTotal() => Math.Round(NetTotal() * TaxRate / 100, 2);
+        public decimal Total() => NetTotal() + TaxTotal();
         public ICollection<BasketItem> Items() => _basketItemsByName.Values;
 
         public void AddItem(Product product) =>
