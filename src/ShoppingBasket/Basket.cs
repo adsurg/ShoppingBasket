@@ -13,7 +13,10 @@ namespace ShoppingBasket
         public void AddItem(Product product) =>
             AddItem(product, 1);
 
-        public void AddItem(Product product, int quantity) =>
-            _basketItemsByName.Add(product.Name, new BasketItem(product, quantity));
+        public void AddItem(Product product, int quantity)
+        {
+            var existingQuantity = _basketItemsByName.TryGetValue(product.Name, out var item) ? item.Quantity : 0;
+            _basketItemsByName[product.Name] = new BasketItem(product, quantity + existingQuantity);
+        }
     }
 }

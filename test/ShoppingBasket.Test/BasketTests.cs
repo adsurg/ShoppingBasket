@@ -82,5 +82,39 @@ namespace ShoppingBasket.Test
                     }
                 });
         }
+
+        [Fact]
+        public void WhenAProductsAreAddedAgainThenTheNetTotalShouldBeCorrect()
+        {
+            var basket = new Basket();
+
+            basket.AddItem(new Product("Dove Soap", 39.99m), 5);
+            basket.AddItem(new Product("Dove Soap", 39.99m), 3);
+
+            basket.NetTotal().Should().Be(319.92m);
+        }
+
+        [Fact]
+        public void WhenAProductsAreAddedAgainThenTheBasketContainsTheCorrectItems()
+        {
+            var basket = new Basket();
+
+            basket.AddItem(new Product("Dove Soap", 39.99m), 5);
+            basket.AddItem(new Product("Dove Soap", 39.99m), 3);
+
+            basket.Items().Should().BeEquivalentTo(
+                new[]
+                {
+                    new
+                    {
+                        Product = new
+                        {
+                            Name = "Dove Soap",
+                            Price = 39.99m
+                        },
+                        Quantity = 8
+                    }
+                });
+        }
     }
 }
