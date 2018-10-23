@@ -116,5 +116,16 @@ namespace ShoppingBasket.Test
                     }
                 });
         }
+
+        [Fact]
+        public void TheTaxTotalShouldBeCorrectlyCalculated()
+        {
+            var basket = new Basket(12.5m);
+
+            basket.AddItem(new Product("Dove Soap", 39.99m), 2);
+            basket.AddItem(new Product("Axe Deo", 99.99m), 2);
+
+            basket.TaxTotal().Should().Be(35m);
+        }
     }
 }
