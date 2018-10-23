@@ -120,7 +120,7 @@ namespace ShoppingBasket.Test
         [Fact]
         public void TheTaxTotalShouldBeCorrectlyCalculated()
         {
-            var basket = new Basket(12.5m);
+            var basket = new Basket(taxRate: 12.5m);
 
             basket.AddItem(new Product("Dove Soap", 39.99m), 2);
             basket.AddItem(new Product("Axe Deo", 99.99m), 2);
@@ -131,7 +131,7 @@ namespace ShoppingBasket.Test
         [Fact]
         public void TheTotalShouldBeCorrectlyCalculated()
         {
-            var basket = new Basket(12.5m);
+            var basket = new Basket(taxRate: 12.5m);
 
             basket.AddItem(new Product("Dove Soap", 39.99m), 2);
             basket.AddItem(new Product("Axe Deo", 99.99m), 2);
